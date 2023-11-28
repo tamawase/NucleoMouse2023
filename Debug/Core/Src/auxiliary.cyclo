@@ -1,0 +1,4 @@
+auxiliary.c:18:6:led_write	1
+auxiliary.c:30:6:led_write_2	1
+auxiliary.c:43:5:select_mode	9
+auxiliary.c:85:5:__io_putchar	2

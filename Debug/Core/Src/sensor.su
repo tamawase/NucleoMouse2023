@@ -1,0 +1,9 @@
+../Core/Src/sensor.c:18:6:sensor_init	8	static
+../Core/Src/sensor.c:43:5:get_adc_value	40	static
+../Core/Src/sensor.c:68:5:get_sensor_value_r	8	static
+../Core/Src/sensor.c:79:5:get_sensor_value_fr	8	static
+../Core/Src/sensor.c:90:5:get_sensor_value_fl	8	static
+../Core/Src/sensor.c:101:5:get_sensor_value_l	8	static
+../Core/Src/sensor.c:112:5:get_batt_vol	8	static
+../Core/Src/sensor.c:123:9:get_base	16	static
+../Core/Src/sensor.c:141:6:get_wall_info	4	static

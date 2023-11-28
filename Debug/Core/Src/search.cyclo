@@ -1,0 +1,12 @@
+search.c:16:6:search_init	1
+search.c:42:6:searchA	11
+search.c:111:6:searchB	17
+search.c:225:6:adv_pos	5
+search.c:249:6:conf_route	2
+search.c:268:6:map_Init	5
+search.c:299:6:write_map	9
+search.c:362:6:turn_dir	1
+search.c:374:6:make_smap	20
+search.c:448:6:make_route	16
+search.c:546:6:store_map_in_eeprom	3
+search.c:564:6:load_map_from_eeprom	3

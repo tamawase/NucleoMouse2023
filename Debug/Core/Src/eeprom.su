@@ -1,0 +1,6 @@
+../Core/Src/eeprom.c:16:19:eeprom_enable_write	32	static
+../Core/Src/eeprom.c:36:19:eeprom_disable_write	8	static
+../Core/Src/eeprom.c:45:19:eeprom_write_halfword	32	static
+../Core/Src/eeprom.c:59:19:eeprom_write_word	32	static
+../Core/Src/eeprom.c:73:10:eeprom_read_halfword	24	static
+../Core/Src/eeprom.c:87:10:eeprom_read_word	24	static
