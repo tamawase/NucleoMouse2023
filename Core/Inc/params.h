@@ -37,9 +37,9 @@
     センサ系
 ------------------------------------------------------------*/
 //----壁判断閾値（しきい値）----
-#define WALL_BASE_FR 1000 // 前壁右センサ
-#define WALL_BASE_FL 900 // 前壁左センサ
-#define WALL_BASE_R 2400  // 右壁センサ
+#define WALL_BASE_FR 1400 // 前壁右センサ
+#define WALL_BASE_FL 1200 // 前壁左センサ
+#define WALL_BASE_R 1900  // 右壁センサ
 #define WALL_BASE_L 1400  // 左壁センサ
 
 #define BATT_LOW_VOL 3204 * 0.88 // バッテリ電圧低下判定のしきい値

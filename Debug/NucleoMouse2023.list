@@ -43,7 +43,7 @@ Idx Name          Size      VMA       LMA       File off  Algn
                   CONTENTS, READONLY, DEBUGGING, OCTETS
  19 .debug_line   00019100  00000000  00000000  000599eb  2**0
                   CONTENTS, READONLY, DEBUGGING, OCTETS
- 20 .debug_str    000aeb36  00000000  00000000  00072aeb  2**0
+ 20 .debug_str    000aeb37  00000000  00000000  00072aeb  2**0
                   CONTENTS, READONLY, DEBUGGING, OCTETS
  21 .debug_frame  00004ffc  00000000  00000000  00121624  2**2
                   CONTENTS, READONLY, DEBUGGING, OCTETS
@@ -4003,16 +4003,16 @@ void searchB(void) {
  8001a8a:	2b88      	cmp	r3, #136	; 0x88
  8001a8c:	d00a      	beq.n	8001aa4 <searchB+0x74>
  8001a8e:	2b88      	cmp	r3, #136	; 0x88
- 8001a90:	dc79      	bgt.n	8001b86 <searchB+0x156>
+ 8001a90:	dc78      	bgt.n	8001b84 <searchB+0x154>
  8001a92:	2b44      	cmp	r3, #68	; 0x44
  8001a94:	d009      	beq.n	8001aaa <searchB+0x7a>
  8001a96:	2b44      	cmp	r3, #68	; 0x44
- 8001a98:	dc75      	bgt.n	8001b86 <searchB+0x156>
+ 8001a98:	dc74      	bgt.n	8001b84 <searchB+0x154>
  8001a9a:	2b11      	cmp	r3, #17
- 8001a9c:	d069      	beq.n	8001b72 <searchB+0x142>
+ 8001a9c:	d068      	beq.n	8001b70 <searchB+0x140>
  8001a9e:	2b22      	cmp	r3, #34	; 0x22
  8001aa0:	d00d      	beq.n	8001abe <searchB+0x8e>
- 8001aa2:	e070      	b.n	8001b86 <searchB+0x156>
+ 8001aa2:	e06f      	b.n	8001b84 <searchB+0x154>
 
         //----前進----
         case 0x88:
@@ -4020,7 +4020,7 @@ void searchB(void) {
             one_sectionU();
  8001aa4:	f7fe fcd2 	bl	800044c <one_sectionU>
             break;
- 8001aa8:	e06d      	b.n	8001b86 <searchB+0x156>
+ 8001aa8:	e06c      	b.n	8001b84 <searchB+0x154>
         //----右折----
         case 0x44:
 
@@ -4034,7 +4034,7 @@ void searchB(void) {
             half_sectionA(); // 半区画分加速しながら走行する
  8001ab8:	f7fe fcaa 	bl	8000410 <half_sectionA>
             break;
- 8001abc:	e063      	b.n	8001b86 <searchB+0x156>
+ 8001abc:	e062      	b.n	8001b84 <searchB+0x154>
         //----180回転----
         case 0x22:
 
@@ -4044,20 +4044,20 @@ void searchB(void) {
             if (ad_fr >= WALL_BASE_FR * 1.5 && ad_fl >= WALL_BASE_FL * 1.5 &&
  8001ac2:	4b53      	ldr	r3, [pc, #332]	; (8001c10 <searchB+0x1e0>)
  8001ac4:	681b      	ldr	r3, [r3, #0]
- 8001ac6:	f240 52db 	movw	r2, #1499	; 0x5db
+ 8001ac6:	f640 0233 	movw	r2, #2099	; 0x833
  8001aca:	4293      	cmp	r3, r2
  8001acc:	d921      	bls.n	8001b12 <searchB+0xe2>
  8001ace:	4b51      	ldr	r3, [pc, #324]	; (8001c14 <searchB+0x1e4>)
  8001ad0:	681b      	ldr	r3, [r3, #0]
- 8001ad2:	f240 5245 	movw	r2, #1349	; 0x545
- 8001ad6:	4293      	cmp	r3, r2
- 8001ad8:	d91b      	bls.n	8001b12 <searchB+0xe2>
+ 8001ad2:	f5b3 6fe1 	cmp.w	r3, #1800	; 0x708
+ 8001ad6:	d31c      	bcc.n	8001b12 <searchB+0xe2>
                 ad_r >= WALL_BASE_R * 1.5) { // 前壁と左壁が確実に有る場合
- 8001ada:	4b4f      	ldr	r3, [pc, #316]	; (8001c18 <searchB+0x1e8>)
- 8001adc:	681b      	ldr	r3, [r3, #0]
+ 8001ad8:	4b4f      	ldr	r3, [pc, #316]	; (8001c18 <searchB+0x1e8>)
+ 8001ada:	681b      	ldr	r3, [r3, #0]
             if (ad_fr >= WALL_BASE_FR * 1.5 && ad_fl >= WALL_BASE_FL * 1.5 &&
- 8001ade:	f5b3 6f61 	cmp.w	r3, #3600	; 0xe10
- 8001ae2:	d316      	bcc.n	8001b12 <searchB+0xe2>
+ 8001adc:	f640 3221 	movw	r2, #2849	; 0xb21
+ 8001ae0:	4293      	cmp	r3, r2
+ 8001ae2:	d916      	bls.n	8001b12 <searchB+0xe2>
                 rotate_L90();                // 左回転
  8001ae4:	f7fe fce0 	bl	80004a8 <rotate_L90>
                 drive_wait(); // 機体が安定するまで待機，drive.h に定義あり
@@ -4082,150 +4082,150 @@ void searchB(void) {
                 drive_wait(); // 機体が安定するまで待機
  8001b0a:	2032      	movs	r0, #50	; 0x32
  8001b0c:	f001 f99e 	bl	8002e4c <HAL_Delay>
- 8001b10:	e029      	b.n	8001b66 <searchB+0x136>
+ 8001b10:	e028      	b.n	8001b64 <searchB+0x134>
             } else if (
                 ad_fr >= WALL_BASE_FR * 1.5 && ad_fl >= WALL_BASE_FL * 1.5 &&
  8001b12:	4b3f      	ldr	r3, [pc, #252]	; (8001c10 <searchB+0x1e0>)
  8001b14:	681b      	ldr	r3, [r3, #0]
             } else if (
- 8001b16:	f240 52db 	movw	r2, #1499	; 0x5db
+ 8001b16:	f640 0233 	movw	r2, #2099	; 0x833
  8001b1a:	4293      	cmp	r3, r2
- 8001b1c:	d921      	bls.n	8001b62 <searchB+0x132>
+ 8001b1c:	d920      	bls.n	8001b60 <searchB+0x130>
                 ad_fr >= WALL_BASE_FR * 1.5 && ad_fl >= WALL_BASE_FL * 1.5 &&
  8001b1e:	4b3d      	ldr	r3, [pc, #244]	; (8001c14 <searchB+0x1e4>)
  8001b20:	681b      	ldr	r3, [r3, #0]
- 8001b22:	f240 5245 	movw	r2, #1349	; 0x545
- 8001b26:	4293      	cmp	r3, r2
- 8001b28:	d91b      	bls.n	8001b62 <searchB+0x132>
+ 8001b22:	f5b3 6fe1 	cmp.w	r3, #1800	; 0x708
+ 8001b26:	d31b      	bcc.n	8001b60 <searchB+0x130>
                 ad_l >= WALL_BASE_L) { // それ以外で前壁と右壁が確実に有る場合
- 8001b2a:	4b3c      	ldr	r3, [pc, #240]	; (8001c1c <searchB+0x1ec>)
- 8001b2c:	681b      	ldr	r3, [r3, #0]
+ 8001b28:	4b3c      	ldr	r3, [pc, #240]	; (8001c1c <searchB+0x1ec>)
+ 8001b2a:	681b      	ldr	r3, [r3, #0]
                 ad_fr >= WALL_BASE_FR * 1.5 && ad_fl >= WALL_BASE_FL * 1.5 &&
- 8001b2e:	f5b3 6faf 	cmp.w	r3, #1400	; 0x578
- 8001b32:	d316      	bcc.n	8001b62 <searchB+0x132>
+ 8001b2c:	f5b3 6faf 	cmp.w	r3, #1400	; 0x578
+ 8001b30:	d316      	bcc.n	8001b60 <searchB+0x130>
                 rotate_R90(); // 右回転
- 8001b34:	f7fe fc9e 	bl	8000474 <rotate_R90>
+ 8001b32:	f7fe fc9f 	bl	8000474 <rotate_R90>
                 drive_wait(); // 機体が安定するまで待機，drive.h に定義あり
- 8001b38:	2032      	movs	r0, #50	; 0x32
- 8001b3a:	f001 f987 	bl	8002e4c <HAL_Delay>
+ 8001b36:	2032      	movs	r0, #50	; 0x32
+ 8001b38:	f001 f988 	bl	8002e4c <HAL_Delay>
                 set_position(0); // 尻当てをして機体の位置を中央へ，drive.c
- 8001b3e:	2000      	movs	r0, #0
- 8001b40:	f7fe fce8 	bl	8000514 <set_position>
+ 8001b3c:	2000      	movs	r0, #0
+ 8001b3e:	f7fe fce9 	bl	8000514 <set_position>
                                  // で定義されている
                 drive_wait(); // 機体が安定するまで待機
- 8001b44:	2032      	movs	r0, #50	; 0x32
- 8001b46:	f001 f981 	bl	8002e4c <HAL_Delay>
+ 8001b42:	2032      	movs	r0, #50	; 0x32
+ 8001b44:	f001 f982 	bl	8002e4c <HAL_Delay>
                 rotate_R90(); // 右回転
- 8001b4a:	f7fe fc93 	bl	8000474 <rotate_R90>
+ 8001b48:	f7fe fc94 	bl	8000474 <rotate_R90>
                 drive_wait(); // 機体が安定するまで待機，drive.h に定義あり
- 8001b4e:	2032      	movs	r0, #50	; 0x32
- 8001b50:	f001 f97c 	bl	8002e4c <HAL_Delay>
+ 8001b4c:	2032      	movs	r0, #50	; 0x32
+ 8001b4e:	f001 f97d 	bl	8002e4c <HAL_Delay>
                 set_position(0); // 尻当てをして機体の位置を中央へ，drive.c
- 8001b54:	2000      	movs	r0, #0
- 8001b56:	f7fe fcdd 	bl	8000514 <set_position>
+ 8001b52:	2000      	movs	r0, #0
+ 8001b54:	f7fe fcde 	bl	8000514 <set_position>
                                  // で定義されている
                 drive_wait(); // 機体が安定するまで待機
- 8001b5a:	2032      	movs	r0, #50	; 0x32
- 8001b5c:	f001 f976 	bl	8002e4c <HAL_Delay>
- 8001b60:	e001      	b.n	8001b66 <searchB+0x136>
+ 8001b58:	2032      	movs	r0, #50	; 0x32
+ 8001b5a:	f001 f977 	bl	8002e4c <HAL_Delay>
+ 8001b5e:	e001      	b.n	8001b64 <searchB+0x134>
             } else {
                 rotate_180(); // 180度回転
- 8001b62:	f7fe fcbb 	bl	80004dc <rotate_180>
+ 8001b60:	f7fe fcbc 	bl	80004dc <rotate_180>
             }
 
             turn_dir(
- 8001b66:	2002      	movs	r0, #2
- 8001b68:	f000 fa52 	bl	8002010 <turn_dir>
+ 8001b64:	2002      	movs	r0, #2
+ 8001b66:	f000 fa53 	bl	8002010 <turn_dir>
                 DIR_TURN_180); // マイクロマウス内部位置情報でも180度回転処理
             half_sectionA(); // 半区画分加速しながら走行する
- 8001b6c:	f7fe fc50 	bl	8000410 <half_sectionA>
+ 8001b6a:	f7fe fc51 	bl	8000410 <half_sectionA>
             break;
- 8001b70:	e009      	b.n	8001b86 <searchB+0x156>
+ 8001b6e:	e009      	b.n	8001b84 <searchB+0x154>
         //----左折----
         case 0x11:
 
             half_sectionD(); // 半区画分減速しながら走行し停止
- 8001b72:	f7fe fc5d 	bl	8000430 <half_sectionD>
+ 8001b70:	f7fe fc5e 	bl	8000430 <half_sectionD>
             rotate_L90();    // 左回転
- 8001b76:	f7fe fc97 	bl	80004a8 <rotate_L90>
+ 8001b74:	f7fe fc98 	bl	80004a8 <rotate_L90>
             turn_dir(DIR_TURN_L90); // マイクロマウス内部位置情報でも右回転処理
- 8001b7a:	20ff      	movs	r0, #255	; 0xff
- 8001b7c:	f000 fa48 	bl	8002010 <turn_dir>
+ 8001b78:	20ff      	movs	r0, #255	; 0xff
+ 8001b7a:	f000 fa49 	bl	8002010 <turn_dir>
             half_sectionA(); // 半区画分加速しながら走行する
- 8001b80:	f7fe fc46 	bl	8000410 <half_sectionA>
+ 8001b7e:	f7fe fc47 	bl	8000410 <half_sectionA>
             break;
- 8001b84:	bf00      	nop
+ 8001b82:	bf00      	nop
         }
         adv_pos();
- 8001b86:	f000 f855 	bl	8001c34 <adv_pos>
+ 8001b84:	f000 f856 	bl	8001c34 <adv_pos>
         conf_route();
- 8001b8a:	f000 f88d 	bl	8001ca8 <conf_route>
+ 8001b88:	f000 f88e 	bl	8001ca8 <conf_route>
         printf(
- 8001b8e:	4b23      	ldr	r3, [pc, #140]	; (8001c1c <searchB+0x1ec>)
- 8001b90:	6819      	ldr	r1, [r3, #0]
- 8001b92:	4b20      	ldr	r3, [pc, #128]	; (8001c14 <searchB+0x1e4>)
- 8001b94:	6818      	ldr	r0, [r3, #0]
- 8001b96:	4b1e      	ldr	r3, [pc, #120]	; (8001c10 <searchB+0x1e0>)
- 8001b98:	681c      	ldr	r4, [r3, #0]
- 8001b9a:	4b1f      	ldr	r3, [pc, #124]	; (8001c18 <searchB+0x1e8>)
- 8001b9c:	681b      	ldr	r3, [r3, #0]
- 8001b9e:	4a20      	ldr	r2, [pc, #128]	; (8001c20 <searchB+0x1f0>)
- 8001ba0:	6812      	ldr	r2, [r2, #0]
- 8001ba2:	9201      	str	r2, [sp, #4]
- 8001ba4:	9300      	str	r3, [sp, #0]
- 8001ba6:	4623      	mov	r3, r4
- 8001ba8:	4602      	mov	r2, r0
- 8001baa:	481e      	ldr	r0, [pc, #120]	; (8001c24 <searchB+0x1f4>)
- 8001bac:	f005 fe8e 	bl	80078cc <iprintf>
+ 8001b8c:	4b23      	ldr	r3, [pc, #140]	; (8001c1c <searchB+0x1ec>)
+ 8001b8e:	6819      	ldr	r1, [r3, #0]
+ 8001b90:	4b20      	ldr	r3, [pc, #128]	; (8001c14 <searchB+0x1e4>)
+ 8001b92:	6818      	ldr	r0, [r3, #0]
+ 8001b94:	4b1e      	ldr	r3, [pc, #120]	; (8001c10 <searchB+0x1e0>)
+ 8001b96:	681c      	ldr	r4, [r3, #0]
+ 8001b98:	4b1f      	ldr	r3, [pc, #124]	; (8001c18 <searchB+0x1e8>)
+ 8001b9a:	681b      	ldr	r3, [r3, #0]
+ 8001b9c:	4a20      	ldr	r2, [pc, #128]	; (8001c20 <searchB+0x1f0>)
+ 8001b9e:	6812      	ldr	r2, [r2, #0]
+ 8001ba0:	9201      	str	r2, [sp, #4]
+ 8001ba2:	9300      	str	r3, [sp, #0]
+ 8001ba4:	4623      	mov	r3, r4
+ 8001ba6:	4602      	mov	r2, r0
+ 8001ba8:	481e      	ldr	r0, [pc, #120]	; (8001c24 <searchB+0x1f4>)
+ 8001baa:	f005 fe8f 	bl	80078cc <iprintf>
 				" ad_l : %4d, ad_fl : %4d, ad_fr : %4d, ad_r : %4d, "
 				"ad_batt : %4d\n",
 				ad_l, ad_fl, ad_fr, ad_r, ad_batt);
 
     } while ((mouse.x != goal_x) ||
- 8001bb0:	4b1d      	ldr	r3, [pc, #116]	; (8001c28 <searchB+0x1f8>)
- 8001bb2:	781b      	ldrb	r3, [r3, #0]
- 8001bb4:	b2da      	uxtb	r2, r3
- 8001bb6:	4b1d      	ldr	r3, [pc, #116]	; (8001c2c <searchB+0x1fc>)
- 8001bb8:	781b      	ldrb	r3, [r3, #0]
+ 8001bae:	4b1e      	ldr	r3, [pc, #120]	; (8001c28 <searchB+0x1f8>)
+ 8001bb0:	781b      	ldrb	r3, [r3, #0]
+ 8001bb2:	b2da      	uxtb	r2, r3
+ 8001bb4:	4b1d      	ldr	r3, [pc, #116]	; (8001c2c <searchB+0x1fc>)
+ 8001bb6:	781b      	ldrb	r3, [r3, #0]
              (mouse.y != goal_y)); // 現在座標とgoal座標が等しくなるまで実行
- 8001bba:	429a      	cmp	r2, r3
- 8001bbc:	f47f af5c 	bne.w	8001a78 <searchB+0x48>
- 8001bc0:	4b19      	ldr	r3, [pc, #100]	; (8001c28 <searchB+0x1f8>)
- 8001bc2:	785b      	ldrb	r3, [r3, #1]
- 8001bc4:	b2da      	uxtb	r2, r3
- 8001bc6:	4b1a      	ldr	r3, [pc, #104]	; (8001c30 <searchB+0x200>)
- 8001bc8:	781b      	ldrb	r3, [r3, #0]
+ 8001bb8:	429a      	cmp	r2, r3
+ 8001bba:	f47f af5d 	bne.w	8001a78 <searchB+0x48>
+ 8001bbe:	4b1a      	ldr	r3, [pc, #104]	; (8001c28 <searchB+0x1f8>)
+ 8001bc0:	785b      	ldrb	r3, [r3, #1]
+ 8001bc2:	b2da      	uxtb	r2, r3
+ 8001bc4:	4b1a      	ldr	r3, [pc, #104]	; (8001c30 <searchB+0x200>)
+ 8001bc6:	781b      	ldrb	r3, [r3, #0]
     } while ((mouse.x != goal_x) ||
- 8001bca:	429a      	cmp	r2, r3
- 8001bcc:	f47f af54 	bne.w	8001a78 <searchB+0x48>
+ 8001bc8:	429a      	cmp	r2, r3
+ 8001bca:	f47f af55 	bne.w	8001a78 <searchB+0x48>
 
     half_sectionD(); // 半区画分減速しながら走行し停止
- 8001bd0:	f7fe fc2e 	bl	8000430 <half_sectionD>
+ 8001bce:	f7fe fc2f 	bl	8000430 <half_sectionD>
 
     HAL_Delay(2200);  //スタートでは***2秒以上***停止しなくてはならない
- 8001bd4:	f640 0098 	movw	r0, #2200	; 0x898
- 8001bd8:	f001 f938 	bl	8002e4c <HAL_Delay>
+ 8001bd2:	f640 0098 	movw	r0, #2200	; 0x898
+ 8001bd6:	f001 f939 	bl	8002e4c <HAL_Delay>
     rotate_180(); // 180度回転
- 8001bdc:	f7fe fc7e 	bl	80004dc <rotate_180>
+ 8001bda:	f7fe fc7f 	bl	80004dc <rotate_180>
     turn_dir(DIR_TURN_180); // マイクロマウス内部位置情報でも180度回転処理
- 8001be0:	2002      	movs	r0, #2
- 8001be2:	f000 fa15 	bl	8002010 <turn_dir>
+ 8001bde:	2002      	movs	r0, #2
+ 8001be0:	f000 fa16 	bl	8002010 <turn_dir>
 
     if (!MF.FLAG.SCND) {
- 8001be6:	4b06      	ldr	r3, [pc, #24]	; (8001c00 <searchB+0x1d0>)
- 8001be8:	881b      	ldrh	r3, [r3, #0]
- 8001bea:	f3c3 0340 	ubfx	r3, r3, #1, #1
- 8001bee:	b2db      	uxtb	r3, r3
- 8001bf0:	2b00      	cmp	r3, #0
- 8001bf2:	d101      	bne.n	8001bf8 <searchB+0x1c8>
+ 8001be4:	4b06      	ldr	r3, [pc, #24]	; (8001c00 <searchB+0x1d0>)
+ 8001be6:	881b      	ldrh	r3, [r3, #0]
+ 8001be8:	f3c3 0340 	ubfx	r3, r3, #1, #1
+ 8001bec:	b2db      	uxtb	r3, r3
+ 8001bee:	2b00      	cmp	r3, #0
+ 8001bf0:	d101      	bne.n	8001bf6 <searchB+0x1c6>
         store_map_in_eeprom(); // 一次探索走行時はROMにマップ情報を書き込む
- 8001bf4:	f000 fc4c 	bl	8002490 <store_map_in_eeprom>
+ 8001bf2:	f000 fc4d 	bl	8002490 <store_map_in_eeprom>
     }
 }
- 8001bf8:	bf00      	nop
- 8001bfa:	3704      	adds	r7, #4
- 8001bfc:	46bd      	mov	sp, r7
- 8001bfe:	bd90      	pop	{r4, r7, pc}
+ 8001bf6:	bf00      	nop
+ 8001bf8:	3704      	adds	r7, #4
+ 8001bfa:	46bd      	mov	sp, r7
+ 8001bfc:	bd90      	pop	{r4, r7, pc}
+ 8001bfe:	bf00      	nop
  8001c00:	2000008c 	.word	0x2000008c
  8001c04:	200002c4 	.word	0x200002c4
  8001c08:	200003c8 	.word	0x200003c8
@@ -5993,11 +5993,11 @@ void get_wall_info(){
   if(ad_fr > WALL_BASE_FR || ad_fl > WALL_BASE_FL){
  80026e6:	4b18      	ldr	r3, [pc, #96]	; (8002748 <get_wall_info+0x6c>)
  80026e8:	681b      	ldr	r3, [r3, #0]
- 80026ea:	f5b3 7f7a 	cmp.w	r3, #1000	; 0x3e8
+ 80026ea:	f5b3 6faf 	cmp.w	r3, #1400	; 0x578
  80026ee:	d804      	bhi.n	80026fa <get_wall_info+0x1e>
  80026f0:	4b16      	ldr	r3, [pc, #88]	; (800274c <get_wall_info+0x70>)
  80026f2:	681b      	ldr	r3, [r3, #0]
- 80026f4:	f5b3 7f61 	cmp.w	r3, #900	; 0x384
+ 80026f4:	f5b3 6f96 	cmp.w	r3, #1200	; 0x4b0
  80026f8:	d906      	bls.n	8002708 <get_wall_info+0x2c>
     //AD値が閾値より大きい（=壁があって光が跳ね返ってきている）場合
     wall_info |= 0x88;                //壁情報を更新
@@ -6012,39 +6012,39 @@ void get_wall_info(){
   if(ad_r > WALL_BASE_R){
  8002708:	4b11      	ldr	r3, [pc, #68]	; (8002750 <get_wall_info+0x74>)
  800270a:	681b      	ldr	r3, [r3, #0]
- 800270c:	f5b3 6f16 	cmp.w	r3, #2400	; 0x960
- 8002710:	d906      	bls.n	8002720 <get_wall_info+0x44>
+ 800270c:	f240 726c 	movw	r2, #1900	; 0x76c
+ 8002710:	4293      	cmp	r3, r2
+ 8002712:	d906      	bls.n	8002722 <get_wall_info+0x46>
     //AD値が閾値より大きい（=壁があって光が跳ね返ってきている）場合
     wall_info |= 0x44;                //壁情報を更新
- 8002712:	4b0c      	ldr	r3, [pc, #48]	; (8002744 <get_wall_info+0x68>)
- 8002714:	781b      	ldrb	r3, [r3, #0]
- 8002716:	f043 0344 	orr.w	r3, r3, #68	; 0x44
- 800271a:	b2da      	uxtb	r2, r3
- 800271c:	4b09      	ldr	r3, [pc, #36]	; (8002744 <get_wall_info+0x68>)
- 800271e:	701a      	strb	r2, [r3, #0]
+ 8002714:	4b0b      	ldr	r3, [pc, #44]	; (8002744 <get_wall_info+0x68>)
+ 8002716:	781b      	ldrb	r3, [r3, #0]
+ 8002718:	f043 0344 	orr.w	r3, r3, #68	; 0x44
+ 800271c:	b2da      	uxtb	r2, r3
+ 800271e:	4b09      	ldr	r3, [pc, #36]	; (8002744 <get_wall_info+0x68>)
+ 8002720:	701a      	strb	r2, [r3, #0]
   }
   //----左壁を見る----
   if(ad_l > WALL_BASE_L){
- 8002720:	4b0c      	ldr	r3, [pc, #48]	; (8002754 <get_wall_info+0x78>)
- 8002722:	681b      	ldr	r3, [r3, #0]
- 8002724:	f5b3 6faf 	cmp.w	r3, #1400	; 0x578
- 8002728:	d906      	bls.n	8002738 <get_wall_info+0x5c>
+ 8002722:	4b0c      	ldr	r3, [pc, #48]	; (8002754 <get_wall_info+0x78>)
+ 8002724:	681b      	ldr	r3, [r3, #0]
+ 8002726:	f5b3 6faf 	cmp.w	r3, #1400	; 0x578
+ 800272a:	d906      	bls.n	800273a <get_wall_info+0x5e>
     //AD値が閾値より大きい（=壁があって光が跳ね返ってきている）場合
     wall_info |= 0x11;                //壁情報を更新
- 800272a:	4b06      	ldr	r3, [pc, #24]	; (8002744 <get_wall_info+0x68>)
- 800272c:	781b      	ldrb	r3, [r3, #0]
- 800272e:	f043 0311 	orr.w	r3, r3, #17
- 8002732:	b2da      	uxtb	r2, r3
- 8002734:	4b03      	ldr	r3, [pc, #12]	; (8002744 <get_wall_info+0x68>)
- 8002736:	701a      	strb	r2, [r3, #0]
+ 800272c:	4b05      	ldr	r3, [pc, #20]	; (8002744 <get_wall_info+0x68>)
+ 800272e:	781b      	ldrb	r3, [r3, #0]
+ 8002730:	f043 0311 	orr.w	r3, r3, #17
+ 8002734:	b2da      	uxtb	r2, r3
+ 8002736:	4b03      	ldr	r3, [pc, #12]	; (8002744 <get_wall_info+0x68>)
+ 8002738:	701a      	strb	r2, [r3, #0]
   }
 
 }
- 8002738:	bf00      	nop
- 800273a:	46bd      	mov	sp, r7
- 800273c:	f85d 7b04 	ldr.w	r7, [sp], #4
- 8002740:	4770      	bx	lr
- 8002742:	bf00      	nop
+ 800273a:	bf00      	nop
+ 800273c:	46bd      	mov	sp, r7
+ 800273e:	f85d 7b04 	ldr.w	r7, [sp], #4
+ 8002742:	4770      	bx	lr
  8002744:	200002c4 	.word	0x200002c4
  8002748:	200000a4 	.word	0x200000a4
  800274c:	200000a8 	.word	0x200000a8
