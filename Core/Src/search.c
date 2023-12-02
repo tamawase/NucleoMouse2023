@@ -197,10 +197,10 @@ void searchB(void) {
         }
         adv_pos();
         conf_route();
-        printf(
-				" ad_l : %4d, ad_fl : %4d, ad_fr : %4d, ad_r : %4d, "
-				"ad_batt : %4d\n",
-				ad_l, ad_fl, ad_fr, ad_r, ad_batt);
+//        printf(
+//				" ad_l : %4d, ad_fl : %4d, ad_fr : %4d, ad_r : %4d, "
+//				"ad_batt : %4d\n",
+//				ad_l, ad_fl, ad_fr, ad_r, ad_batt);
 
     } while ((mouse.x != goal_x) ||
              (mouse.y != goal_y)); // 現在座標とgoal座標が等しくなるまで実行

@@ -60,7 +60,7 @@
 #endif
 
 
-#define drive_wait()  HAL_Delay(50)
+#define drive_wait()  HAL_Delay(15)
 
 
 /*============================================================
