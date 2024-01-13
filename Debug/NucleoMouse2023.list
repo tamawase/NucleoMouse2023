@@ -400,7 +400,7 @@ void half_sectionA(void){
  8000418:	f043 0308 	orr.w	r3, r3, #8
  800041c:	8013      	strh	r3, [r2, #0]
   driveA(PULSE_SEC_HALF);             //半区画のパルス分加速しながら走行。走行後は停止しない
- 800041e:	20db      	movs	r0, #219	; 0xdb
+ 800041e:	20da      	movs	r0, #218	; 0xda
  8000420:	f000 f8a6 	bl	8000570 <driveA>
   get_wall_info();                    //壁情報を取得，片壁制御の有効・無効の判断
  8000424:	f002 f942 	bl	80026ac <get_wall_info>
@@ -425,7 +425,7 @@ void half_sectionD(void){
  8000438:	f043 0308 	orr.w	r3, r3, #8
  800043c:	8013      	strh	r3, [r2, #0]
   driveD(PULSE_SEC_HALF);             //半区画のパルス分減速しながら走行。走行後は停止する
- 800043e:	20db      	movs	r0, #219	; 0xdb
+ 800043e:	20da      	movs	r0, #218	; 0xda
  8000440:	f000 f8c8 	bl	80005d4 <driveD>
 }
  8000444:	bf00      	nop
@@ -448,10 +448,10 @@ void one_sectionU(void){
  8000454:	f043 0308 	orr.w	r3, r3, #8
  8000458:	8013      	strh	r3, [r2, #0]
   driveU(PULSE_SEC_HALF);             //半区画のパルス分等速走行。走行後は停止しない
- 800045a:	20db      	movs	r0, #219	; 0xdb
+ 800045a:	20da      	movs	r0, #218	; 0xda
  800045c:	f000 f916 	bl	800068c <driveU>
   driveU(PULSE_SEC_HALF);             //半区画のパルス分等速走行。走行後は停止しない
- 8000460:	20db      	movs	r0, #219	; 0xdb
+ 8000460:	20da      	movs	r0, #218	; 0xda
  8000462:	f000 f913 	bl	800068c <driveU>
   get_wall_info();                    //壁情報を取得
  8000466:	f002 f921 	bl	80026ac <get_wall_info>
@@ -927,7 +927,7 @@ void drive_init(void){
   //====走行系の変数の初期化====
   max_t_cnt = MAX_T_CNT;      //テーブルカウンタ最高値初期化     MAX_T_CNTはparams.hにマクロ定義あり
  8000750:	4b10      	ldr	r3, [pc, #64]	; (8000794 <drive_init+0x48>)
- 8000752:	22db      	movs	r2, #219	; 0xdb
+ 8000752:	22da      	movs	r2, #218	; 0xda
  8000754:	801a      	strh	r2, [r3, #0]
   min_t_cnt = MIN_T_CNT;      //テーブルカウンタ最低値初期化     MIN_T_CNTはparams.hにマクロ定義あり
  8000756:	4b10      	ldr	r3, [pc, #64]	; (8000798 <drive_init+0x4c>)
@@ -1326,7 +1326,7 @@ void test_run(void){
  80009a2:	603b      	str	r3, [r7, #0]
  80009a4:	e009      	b.n	80009ba <test_run+0x82>
           driveC(PULSE_SEC_HALF*2); //一区画のパルス分デフォルトインターバルで走行
- 80009a6:	f44f 70db 	mov.w	r0, #438	; 0x1b6
+ 80009a6:	f44f 70da 	mov.w	r0, #436	; 0x1b4
  80009aa:	f7ff fe9f 	bl	80006ec <driveC>
           drive_wait();             //機体が安定するまで待機
  80009ae:	200f      	movs	r0, #15
@@ -1421,14 +1421,14 @@ void test_run(void){
  8000a2c:	2000      	movs	r0, #0
  8000a2e:	f7ff ff43 	bl	80008b8 <drive_set_dir>
         driveA(PULSE_SEC_HALF);     //半区画のパルス分加速しながら走行
- 8000a32:	20db      	movs	r0, #219	; 0xdb
+ 8000a32:	20da      	movs	r0, #218	; 0xda
  8000a34:	f7ff fd9c 	bl	8000570 <driveA>
         for(i = 0; i < 6-1; i++){
  8000a38:	2300      	movs	r3, #0
  8000a3a:	603b      	str	r3, [r7, #0]
  8000a3c:	e006      	b.n	8000a4c <test_run+0x114>
           driveU(PULSE_SEC_HALF*2); //一区画のパルス分等速走行
- 8000a3e:	f44f 70db 	mov.w	r0, #438	; 0x1b6
+ 8000a3e:	f44f 70da 	mov.w	r0, #436	; 0x1b4
  8000a42:	f7ff fe23 	bl	800068c <driveU>
         for(i = 0; i < 6-1; i++){
  8000a46:	683b      	ldr	r3, [r7, #0]
@@ -1439,7 +1439,7 @@ void test_run(void){
  8000a50:	ddf5      	ble.n	8000a3e <test_run+0x106>
         }
         driveD(PULSE_SEC_HALF);     //半区画のパルス分減速しながら走行。走行後は停止する
- 8000a52:	20db      	movs	r0, #219	; 0xdb
+ 8000a52:	20da      	movs	r0, #218	; 0xda
  8000a54:	f7ff fdbe 	bl	80005d4 <driveD>
         break;
  8000a58:	bf00      	nop
